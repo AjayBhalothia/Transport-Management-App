@@ -1,10 +1,10 @@
 import { Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function MaintenanceScreen() {
+export default function EmployeesScreen() {
   return (
     <SafeAreaView style={{backgroundColor:"white", flex:1}}>
-      <Text>Maintenance</Text>
+      <Text>Employees</Text>
     </SafeAreaView>
   );
 }
