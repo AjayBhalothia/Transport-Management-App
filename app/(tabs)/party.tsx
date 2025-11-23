@@ -22,6 +22,7 @@ interface Party {
   creditPeriod: number;
   opening: number;
   closing: number;
+  remark: string;
 }
 
 // Mock data for demonstration
@@ -41,6 +42,7 @@ const mockParties: Party[] = [
     creditPeriod: 30,
     opening: 50000,
     closing: 45000,
+    remark: "",
   },
   {
     _id: "2",
@@ -54,6 +56,7 @@ const mockParties: Party[] = [
     creditPeriod: 45,
     opening: 75000,
     closing: 80000,
+    remark: "",
   },
 ];
 
@@ -80,7 +83,9 @@ export default function PartyScreen() {
     >
       <Text style={styles.partyName}>{item.name}</Text>
       <Text style={styles.partyPhone}>
-        {item.phone.length > 0 ? item.phone.map(p => p.value).join(", ") : "No phone"}
+        {item.phone.length > 0
+          ? item.phone.map((p) => p.value).join(", ")
+          : "No phone"}
       </Text>
       <Text style={styles.partyType}>{item.type}</Text>
     </TouchableOpacity>
@@ -195,6 +200,14 @@ export default function PartyScreen() {
                     ₹{selectedParty.closing.toLocaleString()}
                   </Text>
                 </View>
+                {selectedParty.remark && (
+                  <View style={styles.detailRow}>
+                    <Text style={styles.detailLabel}>Remark:</Text>
+                    <Text style={styles.detailValue}>
+                      {selectedParty.remark}
+                    </Text>
+                  </View>
+                )}
               </View>
             )}
           </View>
