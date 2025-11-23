@@ -33,6 +33,14 @@ interface Employee {
   remark: string;
 }
 
+const formatDate = (num?: number) => {
+  if (!num) return "-";
+  const d = new Date(num);
+  return `${d.getDate().toString().padStart(2, "0")}/${(d.getMonth() + 1)
+    .toString()
+    .padStart(2, "0")}/${d.getFullYear()}`;
+};
+
 // Mock data for demonstration
 const mockEmployee: Employee[] = [
   {
@@ -56,7 +64,7 @@ const mockEmployee: Employee[] = [
     status: "Active",
     truck: "MH12AB1234",
     licenseNo: "DL1234567890",
-    licenseExpiry: 1704067200,
+    licenseExpiry: 1694458200000,
     referredBy: "John Doe",
     opening: 50000,
     closing: 45000,
@@ -214,12 +222,11 @@ export default function EmployeesScreen() {
                     </Text>
                   </View>
                 )}
-
                 {selectedEmployee.licenseExpiry && (
                   <View style={styles.detailRow}>
                     <Text style={styles.detailLabel}>License Expiry Date:</Text>
                     <Text style={styles.detailValue}>
-                      {selectedEmployee.licenseExpiry}
+                      {formatDate(selectedEmployee.licenseExpiry)}
                     </Text>
                   </View>
                 )}
